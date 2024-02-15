@@ -3,7 +3,6 @@ from pages.garage_page import GaragePage
 from utils.locators import LoginPageLocators
 
 
-
 class LoginPage(BasePage):
     def __init__(self, driver, user_for_login):
         self.locator = LoginPageLocators
@@ -21,7 +20,6 @@ class LoginPage(BasePage):
 
     def login(self):
         user = self.user_for_login
-        print(user)
         self.enter_email(user["email"])
         self.enter_password(user["password"])
         self.click_login_button()
@@ -31,6 +29,6 @@ class LoginPage(BasePage):
         self.login()
         return GaragePage(self.driver)
 
-    def login_with_in_valid_user(self,):
+    def login_with_in_valid_user(self, ):
         self.login()
         return self.find_element(*self.locator.ERROR_MESSAGE).text
